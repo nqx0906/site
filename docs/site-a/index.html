@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>site-a</title>
+  <meta name="description" content="複数サイト構成の中に置いた site-a のダミーページ">
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-shell">
+        <div class="nav">
+          <div class="brand">
+            <div class="brand-mark">A</div>
+            <div>site-a</div>
+          </div>
+          <div class="nav-links">
+            <a class="pill" href="../">一覧へ戻る</a>
+            <a class="pill" href="#samples">サンプル</a>
+            <a class="pill" href="#notes">メモ</a>
+          </div>
+        </div>
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">Placeholder Site / Subdirectory Example</div>
+            <h1>site-a の<br>ダミーページ。</h1>
+            <p class="lead">
+              これは `docs/site-a/index.html` に置いたサンプルです。
+              1 repo の中で個別サイトを増やすときは、この単位でフォルダを追加していきます。
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#samples">コンテンツを見る</a>
+              <a class="button" href="../">トップへ戻る</a>
+            </div>
+            <div class="hero-visual">
+              <img src="../assets/placeholder-hero.svg" alt="site-a のダミー画像">
+              <p><code>site-a</code> から共通画像を読むときは <code>../assets/...</code> を使います。</p>
+            </div>
+          </div>
+          <div class="metrics">
+            <div class="metric">
+              <strong>URL</strong>
+              <span><code>/site/site-a/</code> として公開されます。</span>
+            </div>
+            <div class="metric">
+              <strong>Shared CSS</strong>
+              <span>見た目は共通の <code>docs/assets/styles.css</code> を使っています。</span>
+            </div>
+            <div class="metric">
+              <strong>Folder</strong>
+              <span>個別サイトのファイルはこのフォルダに閉じ込められます。</span>
+            </div>
+            <div class="metric">
+              <strong>Reusable</strong>
+              <span>別サイトを作るときはこのフォルダをコピーすれば始められます。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="samples">
+      <div class="section-card">
+        <div class="section-head">
+          <div>
+            <h2>サンプルセクション</h2>
+            <p>この中身はダミーです。実際にはサービス説明や作品一覧、LP などに差し替えて使えます。</p>
+          </div>
+          <span class="pill">site-a</span>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <span class="label">Block 01</span>
+            <h3>Landing</h3>
+            <p>1 ページ完結のランディングページとして使う想定です。</p>
+            <span class="card-link">Placeholder</span>
+          </article>
+          <article class="card">
+            <span class="label">Block 02</span>
+            <h3>Works</h3>
+            <p>画像、実績、紹介文などのセクションに置き換えやすい枠です。</p>
+            <span class="card-link">Placeholder</span>
+          </article>
+          <article class="card">
+            <span class="label">Block 03</span>
+            <h3>Contact</h3>
+            <p>導線の最後にお問い合わせや外部リンクを置くこともできます。</p>
+            <span class="card-link">Placeholder</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="notes">
+      <div class="section-card">
+        <div class="section-head">
+          <div>
+            <h2>配置のポイント</h2>
+            <p>サブフォルダ型のサイトは、画像や CSS の相対パスだけ意識すればかなり扱いやすいです。</p>
+          </div>
+        </div>
+        <div class="publish-grid">
+          <article class="publish-step">
+            <strong>画像</strong>
+            <p class="footer-note"><code>../assets/logo.png</code> のように親フォルダの assets を参照します。</p>
+          </article>
+          <article class="publish-step">
+            <strong>専用ファイル</strong>
+            <p class="footer-note">サイト固有の画像が必要なら <code>docs/site-a/assets/</code> を作っても大丈夫です。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
