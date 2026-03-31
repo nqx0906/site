@@ -6,6 +6,8 @@ GitHub Pages 用の最小サンプルです。
 
 - `index.html`
   ダミー情報のトップページ
+- `docs/index.html`
+  GitHub Pages に配信する公開用ページ
 - `.github/workflows/deploy-pages.yml`
   GitHub Pages への自動デプロイ設定
 

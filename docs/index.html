@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample Pages Site</title>
+  <meta name="description" content="ダミー情報で構成したサンプル GitHub Pages">
+  <style>
+    :root {
+      --bg: #07131f;
+      --panel: rgba(10, 24, 39, 0.82);
+      --panel-strong: rgba(15, 36, 58, 0.95);
+      --line: rgba(120, 181, 255, 0.25);
+      --text: #eef6ff;
+      --muted: #9fb7cf;
+      --primary: #47c0ff;
+      --lime: #78f0b2;
+      --amber: #f8b35e;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Hiragino Sans", "Yu Gothic UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(71, 192, 255, 0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(120, 240, 178, 0.14), transparent 28%),
+        linear-gradient(160deg, #040b12 0%, #081726 54%, #05111b 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent 85%);
+      pointer-events: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 36px 0 24px;
+    }
+
+    .hero-shell,
+    .section-card {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(13, 32, 49, 0.96), rgba(6, 16, 27, 0.9));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-shell {
+      padding: 28px;
+    }
+
+    .nav,
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--lime));
+      color: #03111d;
+    }
+
+    .nav-links,
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .pill,
+    .button,
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      padding: 10px 16px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .button.primary {
+      color: #04111b;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), #8ae1ff);
+      border-color: transparent;
+    }
+
+    .hero-grid,
+    .publish-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 28px;
+      align-items: end;
+      margin-top: 36px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(120, 240, 178, 0.22);
+      border-radius: 999px;
+      padding: 8px 14px;
+      color: var(--lime);
+      background: rgba(120, 240, 178, 0.08);
+      font-size: 0.9rem;
+    }
+
+    h1 {
+      margin: 18px 0 14px;
+      font-size: clamp(2.6rem, 7vw, 5.2rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      letter-spacing: -0.03em;
+    }
+
+    .lead,
+    .section-head p,
+    .metric span,
+    .card p,
+    .card li,
+    .footer-note {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .metrics,
+    .card-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .metrics {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .metric,
+    .card,
+    .publish-step {
+      border-radius: 20px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--panel-strong);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.8rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 4px;
+    }
+
+    main {
+      padding-bottom: 56px;
+    }
+
+    section {
+      margin-top: 22px;
+    }
+
+    .section-card {
+      padding: 24px;
+    }
+
+    .card-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 20px;
+    }
+
+    .label {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--amber);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.28rem;
+    }
+
+    .card ul {
+      margin: 0 0 18px;
+      padding-left: 18px;
+    }
+
+    footer {
+      padding: 0 0 48px;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    code {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.95em;
+      color: #d5edff;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .publish-grid,
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        width: min(calc(100% - 20px), var(--max));
+      }
+
+      .hero-shell,
+      .section-card {
+        padding: 20px;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .nav,
+      .section-head {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-shell">
+        <div class="nav">
+          <div class="brand">
+            <div class="brand-mark">SP</div>
+            <div>Sample Pages</div>
+          </div>
+          <div class="nav-links">
+            <a class="pill" href="#categories">カテゴリ</a>
+            <a class="pill" href="#samples">サンプル</a>
+            <a class="pill" href="#publish">公開方法</a>
+          </div>
+        </div>
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">Landing Page / Demo Content / Placeholder Site</div>
+            <h1>ダミー情報で作る<br>GitHub Pages。</h1>
+            <p class="lead">
+              このページは GitHub Pages の見た目と導線だけを確認するためのサンプルです。
+              実在のサービスやリポジトリ説明とは結び付けず、公開前のたたき台としてそのまま差し替えやすい構成にしています。
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#samples">サンプルカードを見る</a>
+              <a class="button" href="#publish">公開手順を見る</a>
+            </div>
+          </div>
+          <div class="metrics">
+            <div class="metric">
+              <strong>3</strong>
+              <span>仮のカテゴリ。見出しやカード配置の確認用です。</span>
+            </div>
+            <div class="metric">
+              <strong>6</strong>
+              <span>ダミーカード数。あとから中身だけ差し替えられます。</span>
+            </div>
+            <div class="metric">
+              <strong>Static</strong>
+              <span>HTML 1 枚から始められるので、最初の公開確認に向いています。</span>
+            </div>
+            <div class="metric">
+              <strong>Pages Ready</strong>
+              <span>GitHub Actions からそのまま静的公開できる構成です。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="categories">
+      <div class="section-card">
+        <div class="section-head">
+          <div>
+            <h2>ダミーカテゴリ</h2>
+            <p>ここは仮のセクションです。後で本物のサービス説明やメニューに置き換える前提で、レイアウトだけ成立させています。</p>
+          </div>
+          <span class="pill">Placeholder</span>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <span class="label">Category 01</span>
+            <h3>Studio</h3>
+            <p>サンプル用の紹介ブロックです。自由に説明文を差し替えられます。</p>
+            <span class="card-link">Sample Link</span>
+          </article>
+          <article class="card">
+            <span class="label">Category 02</span>
+            <h3>Journal</h3>
+            <p>ニュース、アップデート、ブログ一覧などに置き換えやすい枠です。</p>
+            <span class="card-link">Sample Link</span>
+          </article>
+          <article class="card">
+            <span class="label">Category 03</span>
+            <h3>Archive</h3>
+            <p>作品一覧、導入事例、資料置き場などにも転用しやすい構成です。</p>
+            <span class="card-link">Sample Link</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="samples">
+      <div class="section-card">
+        <div class="section-head">
+          <div>
+            <h2>サンプルカード</h2>
+            <p>中身はすべてダミーです。カード数や文字量のバランス確認のために置いています。</p>
+          </div>
+          <span class="pill">Dummy Contents</span>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <span class="label">Template 01</span>
+            <h3>Northwind</h3>
+            <p>仮のプロジェクト名を使ったサンプルカードです。</p>
+            <ul>
+              <li>概要文の長さ確認に使えます</li>
+              <li>CTA ボタンの見え方も確認できます</li>
+            </ul>
+            <span class="card-link">Read More</span>
+          </article>
+          <article class="card">
+            <span class="label">Template 02</span>
+            <h3>Blue Harbor</h3>
+            <p>説明テキストを差し替えるだけで利用できる汎用カードです。</p>
+            <ul>
+              <li>サービス紹介にも採用情報にも対応</li>
+              <li>短い箇条書き向けの余白設計です</li>
+            </ul>
+            <span class="card-link">Read More</span>
+          </article>
+          <article class="card">
+            <span class="label">Template 03</span>
+            <h3>Signal One</h3>
+            <p>仮見出しと仮本文だけで、ページ密度を先に確認できます。</p>
+            <ul>
+              <li>内容確定前のたたき台向けです</li>
+              <li>あとから配色調整しても崩れません</li>
+            </ul>
+            <span class="card-link">Read More</span>
+          </article>
+          <article class="card">
+            <span class="label">Template 04</span>
+            <h3>Canvas Lab</h3>
+            <p>セクション別の色味やカード高さを見たいときのダミーです。</p>
+            <ul>
+              <li>レイアウト検証用のプレースホルダー</li>
+              <li>CTA なし運用にも変更しやすいです</li>
+            </ul>
+            <span class="card-link">Read More</span>
+          </article>
+          <article class="card">
+            <span class="label">Template 05</span>
+            <h3>Orbit Note</h3>
+            <p>イベント、記事、作品、製品紹介など何にでも使える雛形です。</p>
+            <ul>
+              <li>項目数が変わっても収まりやすいです</li>
+              <li>実データ投入前の確認に向いています</li>
+            </ul>
+            <span class="card-link">Read More</span>
+          </article>
+          <article class="card">
+            <span class="label">Template 06</span>
+            <h3>Echo Grid</h3>
+            <p>最後のカードもダミーにして、一覧全体の密度を整えています。</p>
+            <ul>
+              <li>本番情報はあとで自由に差し替え可能です</li>
+              <li>現時点では見た目確認だけを目的にしています</li>
+            </ul>
+            <span class="card-link">Read More</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="publish">
+      <div class="section-card">
+        <div class="section-head">
+          <div>
+            <h2>GitHub Pages 公開方法</h2>
+            <p>中身がダミーでも、公開手順だけ先に通しておけるようにしています。必要になったら HTML を差し替えるだけです。</p>
+          </div>
+        </div>
+        <div class="publish-grid">
+          <article class="publish-step">
+            <strong>1. GitHub 側で Pages を有効化</strong>
+            <p class="footer-note">
+              Repository Settings の <code>Pages</code> で Source を
+              <code>GitHub Actions</code> に設定します。
+            </p>
+          </article>
+          <article class="publish-step">
+            <strong>2. main に push すると自動公開</strong>
+            <p class="footer-note">
+              <code>.github/workflows/deploy-pages.yml</code> が <code>docs/</code> を
+              Pages へデプロイします。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p class="footer-note">
+      このページの本文はすべてプレースホルダーです。必要になったら自由に差し替えて使えます。
+    </p>
+  </footer>
+</body>
+</html>
